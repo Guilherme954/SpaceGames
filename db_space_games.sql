@@ -1,3 +1,6 @@
+CREATE DATABASE IF NOT EXISTS Space_Games;
+USE Space_Games;
+
 -- MySQL dump 10.13  Distrib 8.0.45, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: space_games
