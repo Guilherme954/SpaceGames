@@ -1,7 +1,3 @@
-"""
-Space_Games - URLs principais do projeto
-"""
-
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
@@ -15,7 +11,7 @@ from rest_framework_simplejwt.views import (
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    # App principal
+    # App principal (frontend Django)
     path('', include('games.urls')),
 
     # API REST
@@ -26,12 +22,6 @@ urlpatterns = [
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
 
-# MEDIA (uploads - downloads, imagens etc.)
+# MEDIA (uploads)
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-
-# Personalização do Django Admin
-admin.site.site_header = '🚀 Space_Games Admin'
-admin.site.site_title = 'Space_Games'
-admin.site.index_title = 'Painel Administrativo'

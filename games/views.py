@@ -15,11 +15,16 @@ from django.views.decorators.http import require_POST
 from .models import Jogo, Categoria, Favorito, Carrinho, Biblioteca, Cliente
 from .forms import CadastroForm, PerfilForm
 
+from rest_framework import viewsets
+from .models import Jogo
+from .serializers import JogoSerializer
 
 # ─────────────────────────────────────────────
 # PÁGINA INICIAL
 # ─────────────────────────────────────────────
-
+class JogoViewSet(viewsets.ModelViewSet):
+    queryset = Jogo.objects.all()
+    serializer_class = JogoSerializer
 def home(request):
     """
     Página inicial com jogos em destaque, categorias e jogos gratuitos.

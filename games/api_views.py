@@ -1,5 +1,5 @@
 from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import AllowAny
 
 from .models import Jogo, Cliente, Venda
 from .serializers import (
@@ -8,13 +8,11 @@ from .serializers import (
     VendaSerializer
 )
 
-from rest_framework.permissions import IsAuthenticated
 from .permissions import (
     IsAdmin,
     IsFuncionarioOuAdmin
 )
 
-from rest_framework.permissions import AllowAny
 
 class JogoViewSet(viewsets.ModelViewSet):
     queryset = Jogo.objects.all()
@@ -32,5 +30,3 @@ class VendaViewSet(viewsets.ModelViewSet):
     queryset = Venda.objects.all()
     serializer_class = VendaSerializer
     permission_classes = [IsAdmin]
-
-    

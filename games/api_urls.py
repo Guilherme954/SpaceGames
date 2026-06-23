@@ -1,21 +1,10 @@
-from django.urls import path
-from .api_views import (JogoViewSet, ClienteViewSet, VendaViewSet
-)
+from rest_framework.routers import DefaultRouter
+from .api_views import JogoViewSet, ClienteViewSet, VendaViewSet
 
-jogos_list = JogoViewSet.as_view({
-    'get': 'list',
-})
+router = DefaultRouter()
 
-clientes_list = ClienteViewSet.as_view({
-    'get': 'list',
-})
+router.register(r'jogos', JogoViewSet, basename='jogos')
+router.register(r'clientes', ClienteViewSet, basename='clientes')
+router.register(r'vendas', VendaViewSet, basename='vendas')
 
-vendas_list = VendaViewSet.as_view({
-    'get': 'list',
-})
-
-urlpatterns = [
-    path('jogos/', jogos_list, name='api_jogos'),
-    path('clientes/', clientes_list, name='api_clientes'),
-    path('vendas/', vendas_list, name='api_vendas'),
-]
+urlpatterns = router.urls
